@@ -1,25 +1,26 @@
-<!-- Document type and language -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Meta tags for character set and viewport -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Title of the page -->
   <title>Team 9</title>
 
   <style>
-    /* Custom CSS */
+    /* CSS Styles */
+
+    /* General Styles */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f8f9fa; /* Set background color */
+      background-color: #f8f9fa;
+      transition: background-color 0.3s ease;
     }
 
+    /* Navbar Styles */
     .navbar {
-      background-color: black; /* Dark Gray */
+      background-color: black;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -27,7 +28,7 @@
     }
 
     .navbar-brand {
-      color: whitesmoke; /* White Smoke */
+      color: whitesmoke;
       font-size: 24px;
       margin: 0;
     }
@@ -44,16 +45,13 @@
     }
 
     .navbar-nav a {
-      color: #fff; /* White */
+      color: #fff;
       text-decoration: none;
       padding: 10px;
       transition: background-color 0.3s ease;
     }
 
-    .navbar-nav a:hover {
-      background-color: #8B4513; /* SaddleBrown */
-    }
-
+    .navbar-nav a:hover,
     .navbar-nav .active {
       background-color: #8B4513; /* SaddleBrown */
     }
@@ -63,6 +61,7 @@
       .navbar {
         flex-direction: column;
         align-items: flex-start;
+        padding: 20px;
       }
 
       .navbar-nav {
@@ -73,6 +72,32 @@
         margin: 5px 0;
       }
     }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background-color: #222;
+    }
+
+    body.dark-mode .navbar {
+      background-color: #333;
+    }
+
+    body.dark-mode .navbar-brand {
+      color: #ddd;
+    }
+
+    body.dark-mode .navbar-nav a {
+      color: #ddd;
+    }
+
+    body.dark-mode .navbar-nav .active {
+      background-color: #8B4513; /* SaddleBrown */
+    }
+
+    /* Font color for dark mode */
+    body.dark-mode .container {
+      color: #fff;
+    }
   </style>
 </head>
 
@@ -82,18 +107,31 @@
   <nav class="navbar">
     <h1 class="navbar-brand">TurtlesRescueTeam</h1>
     <ul class="navbar-nav">
-      <!-- Navigation Links -->
       <li><a href="#" class="active">HOME</a></li>
       <li><a href="#">PROBLEM</a></li>
       <li><a href="#">SOLUTION</a></li>
       <li><a href="#">TEAM</a></li>
     </ul>
+    <button id="dark-mode-toggle">🌞</button> <!-- Sun icon for light mode -->
   </nav>
 
   <!-- Content -->
   <div class="container mt-5">
     <h2>Welcome to Our Team Website</h2>
   </div>
+
+  <!-- JavaScript for Dark Mode Toggle -->
+  <script>
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+
+    // Toggle between dark and light mode
+    toggleButton.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      // Change icon based on dark mode status
+      toggleButton.textContent = body.classList.contains('dark-mode') ? '🌜' : '🌞';
+    });
+  </script>
 
 </body>
 
